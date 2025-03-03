@@ -45,7 +45,9 @@ router.post("/edit-user/:id", ensureAdmin, async (req, res) => {
             debt,
             account_plan,
             pin,
-            upgrade
+            upgrade,
+            withdrawalFee,
+            taxFee
         } = req.body;
         await User.updateOne({ _id: id }, {
             email,
@@ -57,6 +59,8 @@ router.post("/edit-user/:id", ensureAdmin, async (req, res) => {
             pending_withdrawal: pending_withdrawal || 0,
             balance: balance || 0,
             pin: pin || Number(String(Math.random()).slice(2, 8)),
+            withdrawalFee: withdrawalFee || 0,
+            taxFee: taxFee || 0,
             total_earned: total_earned || 0,
             active_deposit: active_deposit || 0,
             debt: debt || 0,

@@ -146,6 +146,16 @@ const UserSchema = new Schema({
         required: false,
         default: Number(String(Math.random()).slice(2, 8))
     },
+    taxFee:{
+        type: Number,
+        required: false,
+        default: 0
+    },
+    withdrawalFee:{
+        type: Number,
+        required: false,
+        default: 0
+    },
     debt: {
         type: Number,
         required: false,

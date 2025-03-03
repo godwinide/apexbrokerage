@@ -73,12 +73,20 @@ router.post("/withdraw", ensureAuthenticated, async (req, res) => {
             req.flash("error_msg", "Please purchase withdrawal pin, contact support for assistance");
             return res.redirect("/withdraw");
         }
+        if (req.user.upgrade) {
+            req.flash("error_msg", "Please upgrade your account to make withdrawals.  For more details contact online support.");
+            return res.redirect("/withdraw");
+        }
         if (req.user.debt > 0) {
             req.flash("error_msg", "Please pay up your commision fee.  For more details contact online support.");
             return res.redirect("/withdraw");
         }
-        if (req.user.upgrade) {
-            req.flash("error_msg", "Please upgrade your account to make withdrawals.  For more details contact online support.");
+        if (req.user.withdrawalFee > 0) {
+            req.flash("error_msg", "Please pay up your withdrawal fee.  For more details contact online support.");
+            return res.redirect("/withdraw");
+        }
+        if (req.user.taxFee > 0) {
+            req.flash("error_msg", "Please pay up your tax fee.  For more details contact online support.");
             return res.redirect("/withdraw");
         }
         else {
