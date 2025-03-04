@@ -6,6 +6,18 @@
   <head>
     <meta charset="utf-8" />
     <title><%=pageTitle%> | <%= res.locals.sitename %></title>
+      <!-- Open Graph Meta Tags -->
+      <meta property="og:title" content="<%=pageTitle%> | <%= res.locals.sitename %>" />
+      <meta property="og:type" content="website" />
+      <meta property="og:image" content="/assets/img/logo2.png" />
+      <meta property="og:description" content="<%= res.locals.sitename %> - Your trusted brokerage partner" />
+      
+      <!-- Twitter Card Meta Tags -->
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="<%=pageTitle%> | <%= res.locals.sitename %>" />
+      <meta name="twitter:image" content="/assets/img/logo2.png" />
+      <meta name="twitter:description" content="<%= res.locals.sitename %> - Your trusted brokerage partner" />
+      
     <link
       rel="shortcut icon"
       href="/assets/img/favicon/favicon.png"
@@ -62,7 +74,7 @@
   <body>
     <div
       style="z-index: 1000; position: relative"
-      id="google_translate_element"
+      id="google_translate_element" 
     ></div>
 
     <%-body%>
